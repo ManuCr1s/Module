@@ -1,0 +1,8 @@
+.enlace:hover{
+    text-decoration: none;
+}
+.caja{
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+}
