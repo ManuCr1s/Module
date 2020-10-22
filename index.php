@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-row d-flex justify-content-center">
                             <label for="">¿No tiene cuenta?,</label>
-                            <a href="" class="text-warning">Registrese</a>
+                            <a href="app/indicadores.php" class="text-warning">Registrese</a>
                         </div>
                     </form>
             </div>

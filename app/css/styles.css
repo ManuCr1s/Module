@@ -8,3 +8,12 @@
 .entrada_login{
     background-color: #d6dbdf;
 }
+/*Estilos del Panel de Control*/
+.enlace:hover{
+    text-decoration: none;
+}
+.caja{
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+}
