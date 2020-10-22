@@ -1,14 +1,10 @@
-.row{
-    background-image: url('../img/fondo.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center; 
+/*Estilos del Login Principal*/
+.fondo_login{
+    background-color:#5d6d7e;
 }
-.card{
-    transition: .4s ease-in-out;
-    background-color:  #fff9c4 ;
+.logo_login{
+    color: #f2f4f4;
 }
-.card:hover{
-    transform: scale(1.05);
-    background-color:  #fff59d;
+.entrada_login{
+    background-color: #d6dbdf;
 }

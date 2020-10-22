@@ -3,45 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modulo de Reclamos</title>
+    <title>Sistema de Reclamos</title>
     <link rel="stylesheet" href="app/css/bootstrap.css">
     <link rel="stylesheet" href="app/css/styles.css">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row vh-100 bg-light">
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <div class="card shadow" style="max-width: 18rem;">
-                    <div class="card-header d-flex justify-content-center p-5">
-                        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-people-fill rounded" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                        </svg>
-                    </div>
-                    <div class="card-body text-secondary">
-                        <h5 class="card-title text-center">ADMINISTRADOR</h5>
-                        <p class="card-text text-center">Creacion y Administracion de Usuarios</p>
-                    </div>
-                    <div class="card-footer d-flex justify-content-center">
-                        <a href="app/admin.php" class="btn btn-warning">Ingresar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 d-flex justify-content-center align-items-center">
-                <div class="card shadow" style="max-width: 18rem;">
-                    <div class="card-header d-flex justify-content-center p-5">
-                        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        </svg>
-                    </div>
-                    <div class="card-body text-secondary">
-                        <h5 class="card-title text-center">USUARIO</h5>
-                        <p class="card-text text-center">Atencion y procesamiento de reclamos</p>       
-                    </div>
-                    <div class="card-footer d-flex justify-content-center">
-                        <a href="app/user.php" class="btn btn-warning">Ingresar</a>
-                    </div>
-                </div>
-
+    <div class="container-fluid vh-100">
+        <div class="fondo_login row vh-100">
+            <div class="col-lg-12 d-flex justify-content-center align-items-center">
+                    <form id="dates_user" class="form h-75 p-4 text-white">
+                        <div class="form-row col-lg-12 justify-content-center my-3">
+                            <svg width="6em" height="6em" viewBox="0 0 16 16" class="logo_login bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                            </svg>
+                        </div>
+                        <div class="form-row mt-4">
+                            <label for="nombre">Nombre de Usuario</label>
+                            <input type="text" class="entrada_login form-control" id="nombre">
+                        </div>
+                        <div class="form-row mb-4">
+                            <label for="pass">Contraseña</label>
+                            <input type="text" class="entrada_login form-control" id="pass">
+                        </div>
+                        <div class="form-row mb-4">
+                            <a href="" class="col-12 text-warning my-1">Recuperar Usuario y Contraseña</a>
+                            <input type="submit" class="col-12 btn btn-warning text-secondary font-weight-bold" value="Iniciar Sesión">
+                        </div>
+                        <div class="form-row d-flex justify-content-center">
+                            <label for="">¿No tiene cuenta?,</label>
+                            <a href="" class="text-warning">Registrese</a>
+                        </div>
+                    </form>
             </div>
         </div>
     </div>
