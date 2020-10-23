@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Reclamacion</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="datatables/datatables.min.css">
     <link rel="stylesheet" href="datatables/DataTables-1.10.22/css/dataTables.bootstrap4.min.css">
 </head>
