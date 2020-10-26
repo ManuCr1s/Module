@@ -9,6 +9,14 @@
     background-color: #d6dbdf;
 }
 /*Estilos del Panel de Control*/
+    /*Barra de Navegacion*/
+
+.nav_perfil{
+    left: -300px;
+    right: 0;
+    border: none;
+}
+    /*Panel de Inicio*/
 .enlace:hover{
     text-decoration: none;
 }

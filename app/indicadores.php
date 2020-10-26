@@ -35,7 +35,7 @@ require_once "scripts/admin.php";
                 </div>
                 <div class="col">
                     <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-                            <div class="card-header">CANTIDAD DE RECLAMOS NO ATENDIDOS</div>
+                            <div class="card-header">CANTIDAD DE RECLAMOS POR ATENDER</div>
                             <div class="card-body">
                                 <h1 class="card-text text-center"><?php echo $valores[1]; ?></h1>
                             </div>

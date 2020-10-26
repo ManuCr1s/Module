@@ -12,3 +12,7 @@ require_once "layouts/header.php";
         </div>
     </div>
 </div>
+</body>
+<?php require_once "layouts/footer.php";?>
+<script src="js/proceso.js"></script> 
+<script src="js/send.js"></script>
