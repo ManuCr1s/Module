@@ -7,7 +7,7 @@ require_once "layouts/header.php";
             require_once "layouts/nav_lateral.php";
         ?>
         <div class="col-9 py-3 px-5">
-        <h2 class="text-center mb-4">Reclamos Pendientes</h2>
+        <h2 class="text-center mb-4">Reclamos por Atender</h2>
         <table id="tablas" class="table" cellspacing="0" width="100%">
             <thead>
                     <tr>
