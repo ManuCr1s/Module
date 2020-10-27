@@ -16,7 +16,6 @@ let listar = function(){
         ]
     });
     obtener_data("#tablas tbody",table);
-    pdf("#tablas tbody",table);
 }
 let obtener_data =function(tbody,table){
     $(tbody).on("click","button#editar",function(){
