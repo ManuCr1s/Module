@@ -97,19 +97,25 @@ require_once "layouts/header.php";
                                             <input type="text" class="form-control" name="dni" required>
                                         </div>
                                     </div>
+                                     <div class="form-row m-2">
+                                        <div class="form-group col-12">
+                                            <label for="">Analisis de los hechos</label>
+                                            <textarea class="form-control" name="hechos" cols="30" rows="5" required></textarea>
+                                        </div> 
+                                    </div>
                                     <div class="form-row m-2">
                                         <div class="form-group col-12">
                                             <label for="">Conclusion del reclamo</label>
                                             <select name="conclusion" id="" class="form-control">
-                                                <option value="fundado">FUNDADO</option>
-                                                <option value="improcedente">IMPROCEDENTE</option>
-                                                <option value="infundado">INFUNDADO</option>
+                                                <option value="FUNDADO">FUNDADO</option>
+                                                <option value="IMPROCEDENTE">IMPROCEDENTE</option>
+                                                <option value="INFUNDADO">INFUNDADO</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-row m-2">
                                         <div class="form-group col-12">
-                                            <label for="">Detalle la conclusion del reclamo</label>
+                                            <label for="">Detalle la conclusion del reclamo o medidas a tomar</label>
                                             <textarea class="form-control" name="detalle" cols="30" rows="5" required></textarea>
                                         </div> 
                                     </div>

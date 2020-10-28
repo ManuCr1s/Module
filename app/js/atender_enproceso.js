@@ -7,7 +7,7 @@ let listar = function(){
     let table = $('#tablas').DataTable({
         "ajax":{
             "method":"POST",
-            "url":'scripts/proceso.php'
+            "url":'scripts/procesado.php'
         },
         "columns":[
             {"data":"id_reclamo"},
@@ -45,7 +45,7 @@ function guardar(e)
 {
 	e.preventDefault();
 	$.ajax({
-		url: 'scripts/procesar.php',
+		url: 'scripts/atender_enproceso.php',
 		type: 'POST',
 		data: $(this).serializeArray()
 	}).done(function(resp){
