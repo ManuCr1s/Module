@@ -19,7 +19,9 @@ require_once "layouts/header.php";
                     </th>
                     <th class="th-sm">Estado
                     </th>
-                    <th class="th-sm">Resumen
+                    <th class="th-sm">Informe Completo
+                    </th>
+                    <th class="th-sm">Enviar al Usuario
                     </th>
                     </tr>
             </thead>

@@ -12,7 +12,8 @@ let listar = function(){
             {"data":"fecha"},
             {"data":"nombre_usuario"},
             {"defaultContent":'<div class="bg-success caja"></div>'},
-            {"defaultContent":'<a href="scripts/imprimir.php" id="pdf" class="btn btn-success">PDF</a>'},
+            {"defaultContent":'<a href="scripts/imprimir.php" id="pdf" class="btn btn-secondary">INFORME</a>'},
+            {"defaultContent":'<a href="scripts/imprimir.php" id="pdf" class="btn btn-primary">RESPUESTA</a>'},
         ],
     });
     obtener_data("#tablas tbody",table);
