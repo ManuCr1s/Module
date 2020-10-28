@@ -55,12 +55,12 @@ require_once "layouts/header.php";
                         </div>
                         <h6 class="text-white bg-secondary p-2">Detalle del Agraviado</h6>
                         <div class="form-row p-2">
-                            <div class="form-group">
+                            <div class="form-group col-12">
                                 <label for="">Nombre del Usuario</label>
                                 <input type="text" class="form-control" id="nombre">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group col-12">
                                 <label for="">Numero de documento</label>
                                 <input type="text" class="form-control" id="numero_documento">
                             </div>
@@ -89,25 +89,31 @@ require_once "layouts/header.php";
                                     <div class="form-row m-2">
                                         <input type="text" class="d-none" name="id_reclamo" id="registro"> 
                                         <div class="form-group col-12">
-                                            <label for="">Nombre del responsable de la Unidad o Area Implicada</label>
+                                            <label for="">Nombre del personal de la Unidad o Area Implicada</label>
                                             <input type="text" class="form-control" name="persona" required>
                                         </div>
                                     </div>
                                     <div class="form-row m-2">
                                         <div class="form-group col-12">
-                                            <label for="">DNI del responsable de la Unidad o Area Implicada</label>
+                                            <label for="">DNI del personal de la Unidad o Area Implicada</label>
                                             <input type="text" class="form-control" name="dni" required>
                                         </div>
                                     </div>
                                     <div class="form-row m-2">
                                         <div class="form-group col-12">
-                                            <label for="">Detalle la solucion del reclamo</label>
+                                            <label for="">Fecha de la notificación</label>
+                                            <input type="date" class="form-control" name="fecha" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row m-2">
+                                        <div class="form-group col-12">
+                                            <label for="">Detalle la notificación</label>
                                             <textarea class="form-control" name="detalle" cols="30" rows="5" required></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary">Atender</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                             </form>
                     </div>
