@@ -1,7 +1,7 @@
 <?php 
 require_once "conexion.php";
 require_once "../fpdf/fpdf.php";
-$reclamo = mysqli_query($link,"SELECT id_reclamo ,fecha ,detalles,autoriza,id_tercero,nombre_usuario,numero_documento,tipo_documento,domicilio_usuario,email,telefono,nombre, nombre_area FROM usuario 
+$reclamo = mysqli_query($link,"SELECT id_reclamo ,cod_reclamo,fecha ,detalles,autoriza,id_tercero,nombre_usuario,numero_documento,tipo_documento,domicilio_usuario,email,telefono,nombre, nombre_area FROM usuario 
 INNER JOIN reclamo ON  usuario.numero_documento = reclamo.id_usuario 
 INNER JOIN unidad ON reclamo.id_unidad = unidad.id
 LEFT JOIN area ON area.id = reclamo.id_area WHERE reclamo.id_reclamo = {$_POST['id']}");
@@ -12,7 +12,7 @@ $pdf->Image('../img/hrdac.png',10,10,60 );
 $pdf->Image('../img/susalud.png',140,10,60 );
 $pdf->SetFont('Arial','B',20);
 $pdf->Ln(28);
-$pdf->Cell(185, 10, 'HOJA DE RECLAMACION EN SALUD ', 0,0,'C');
+$pdf->Cell(185, 10, 'HOJA DE RECLAMACION EN SALUD', 0,0,'C');
 $pdf->SetFont('Arial','B',8);
 $pdf->Ln(12);
 $pdf->SetFillColor(183,213,239);
@@ -21,9 +21,15 @@ $pdf->Ln(5);
 $pdf->SetFillColor(255,255,255);
 $pdf->SetX(15);
 $pdf->Cell(110, 11,'IPRESS:  HOSPITAL REGIONAL DANIEL ALCIDES CARRION - PASCO', 0,0,'C',1);
+$pdf->Ln(1);
 $pdf->SetX(140);
-$pdf->Cell(50, 33,'HOJA EN RECLAMACION', 0,0,'C',1);
-$pdf->Ln(11);
+$pdf->SetFillColor(255,213,84);
+$pdf->Cell(50, 11,'HOJA EN RECLAMACION N:', 0,0,'C',1);
+$pdf->Ln(8);
+$pdf->SetX(140);
+$pdf->SetFillColor(255,213,84);
+$pdf->Cell(50, 22,$respuesta[0]['cod_reclamo'], 0,0,'C',1);
+$pdf->Ln(1);
 $pdf->SetX(15);
 $pdf->SetFillColor(255,255,255);
 $pdf->Cell(110, 11,'DIRECCION:  AV. LOS INCAS S/N. SAN JUAN - YANACANCHA-PASCO', 0,0,'C',1);
@@ -84,18 +90,55 @@ $pdf->Ln(10);
 if(!empty($respuesta[0]['id_tercero'])){
     $resp = mysqli_query($link,"SELECT * FROM tercero WHERE numero_tercero = {$respuesta[0]['id_tercero']}");
     $tercero = mysqli_fetch_all($resp,MYSQLI_ASSOC);
-    $pdf->SetFillColor(233,233,233);
-    $pdf->Cell(190, 5,'IDENTIFICACION DE QUIEN PRESENTA EL RECLAMO ', 1,0,'L',1);
+
+    $pdf->SetFont('Arial','B',8);
+    $pdf->SetFillColor(183,213,239);
+    $pdf->Cell(190, 65,'', 0,0,'C',1);
+    $pdf->Ln(3);
+    $pdf->SetX(15);
+    $pdf->Cell(170, 5,'2. IDENTIFICACION DE QUIEN PRESENTA EL RECLAMO (En caso der el usuario afectado no es necesario su llenado)', 0,0,'L',1);
+    $pdf->Ln(7);
+    $pdf->SetFillColor(255,255,255);
+    $pdf->SetFont('Arial','B',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 5,'TIPO DE DOCUMENTO: ', 0,0,'L',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 5,'NUMERO DE DOCUMENTO: ', 0,0,'L',1);
     $pdf->Ln(5);
-    $pdf->Cell(95, 14,'TIPO DE DOCUMENTO: '.$tercero[0]['tipo_tercero'], 1,0,'L');
-    $pdf->Cell(95, 14,'NUMERO DE DOCUMENTO:  '.$tercero[0]['numero_tercero'], 1,0,'L');
-    $pdf->Ln(14);
-    $pdf->Cell(95, 14,'NOMBRE O RAZON SOCIAL: '.$tercero[0]['nombre_tercero'], 1,0,'L');
-    $pdf->Cell(95, 14,'EMAIL: '.$tercero[0]['email_tercero'], 1,0,'L');
-    $pdf->Ln(14);
-    $pdf->Cell(95, 14,'DOMICILIO: '.$tercero[0]['domicilio_tercero'], 1,0,'L');
-    $pdf->Cell(95, 14,'TELEFONO: '.$tercero[0]['telefono_tercero'], 1,0,'L');
-    $pdf->Ln(14);
+    $pdf->SetFont('Arial','',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 7,strtoupper($tercero[0]['tipo_tercero']), 0,0,'C',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 7,$tercero[0]['numero_tercero'], 0,0,'C',1);
+    $pdf->Ln(7);
+
+    $pdf->SetFillColor(255,255,255);
+    $pdf->SetFont('Arial','B',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 5,'NOMBRE O RAZON SOCIAL: ', 0,0,'L',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 5,'EMAIL: ', 0,0,'L',1);
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial','',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 7,utf8_decode($tercero[0]['nombre_tercero']), 0,0,'C',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 7,utf8_decode($tercero[0]['email_tercero']), 0,0,'C',1);
+    $pdf->Ln(7);
+
+    $pdf->SetFillColor(255,255,255);
+    $pdf->SetFont('Arial','B',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 5,'DOMICILIO: ', 0,0,'L',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 5,'TELEFONO: ', 0,0,'L',1);
+    $pdf->Ln(5);
+    $pdf->SetFont('Arial','',7);
+    $pdf->SetX(15);
+    $pdf->Cell(90, 7,utf8_decode($tercero[0]['domicilio_tercero']), 0,0,'C',1);
+    $pdf->SetX(105);
+    $pdf->Cell(90, 7,$tercero[0]['telefono_tercero'], 0,0,'C',1);
+    $pdf->Ln(10);
 }else {
     $pdf->SetFont('Arial','B',8);
     $pdf->SetFillColor(183,213,239);
@@ -147,26 +190,25 @@ if(!empty($respuesta[0]['id_tercero'])){
     $pdf->Ln(10);
 }
 
-$pdf->SetFont('Arial','B',8);
-$pdf->SetFillColor(224,225,226);
+$pdf->SetFillColor(233,233,233);
 $pdf->Cell(190, 65,'', 0,0,'C',1);
 $pdf->Ln(3);
 $pdf->SetX(15);
+$pdf->SetFont('Arial','B',8);
 $pdf->Cell(170, 5,'3. DETALLE DEL RECLAMO', 0,0,'L',1);
 $pdf->Ln(7);
 $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',7);
 $pdf->SetX(15);
-$pdf->Cell(90, 5,'UNIDAD O SERVICIO: ', 0,0,'L',1);
-$pdf->SetX(105);
-$pdf->Cell(90, 5,'AREA: ', 0,0,'L',1);
-$pdf->Ln(5);
-$pdf->SetFont('Arial','',6);
-$pdf->SetX(15);
-$pdf->Cell(90, 7,utf8_decode($respuesta[0]['nombre']), 0,0,'L',1);
-$pdf->SetX(105);
-$pdf->Cell(90, 7,utf8_decode($respuesta[0]['nombre_area']), 0,0,'L',1);
+$pdf->Cell(180, 7,'UNIDAD O SERVICIO: '.utf8_decode($respuesta[0]['nombre']), 0,0,'L',1);
 $pdf->Ln(7);
+$pdf->SetX(15);
+if(!empty($respuesta[0]['nombre_area'])){
+    $pdf->Cell(180, 7,'AREA: '.utf8_decode($respuesta[0]['nombre_area']), 0,0,'L',1);
+}else{
+    $pdf->Cell(180, 7,'AREA: ', 0,0,'L',1);
+}
+$pdf->Ln(10);
 
 $pdf->SetFillColor(255,255,255);
 $pdf->SetFont('Arial','B',7);
@@ -178,14 +220,13 @@ $pdf->SetX(15);
 $pdf->MultiCell(180,4,utf8_decode($respuesta[0]['detalles']),0,'J',1);
 $pdf->Ln(4);
 
-$pdf->SetFont('Arial','B',8);
 $pdf->SetFillColor(183,213,239);
-$pdf->Cell(190, 5,'', 0,0,'C',1);
+$pdf->Cell(190, 10,'', 0,0,'C',1);
 $pdf->SetX(15);
 $pdf->SetFont('Arial','B',8);
-$pdf->Cell(110, 5,'4. AUTORIZO NOTIFICACION DEL RESULTADO DEL RECLAMO AL EMAIL CONSIGNADO ', 0,0,'L',1);
-$pdf->Cell(65, 5," ".strtoupper($respuesta[0]['autoriza']), 0,0,'R');
-$pdf->Ln(5);
+$pdf->Cell(110, 8,'4. AUTORIZO NOTIFICACION DEL RESULTADO DEL RECLAMO AL EMAIL CONSIGNADO ', 0,0,'L',1);
+$pdf->Cell(65, 8," ".strtoupper($respuesta[0]['autoriza']), 0,0,'R');
+$pdf->Ln(9);
 
 $pdf->SetFillColor(233,233,233);
 $pdf->SetFont('Arial','B',6);
@@ -204,25 +245,25 @@ $pdf->Ln(15);
 $pdf->SetX(30);
 $pdf->Cell(150, 11,'DATOS DE LA NOTIFICACION', 0,0,'C',1);
 $pdf->Ln(11);
-$pdf->SetFont('Arial','B',6);
+$pdf->SetFont('Arial','B',7);
 $pdf->SetX(30);
 $pdf->Cell(30, 11,'NOMBRE', 1,0,'C',0);
 $pdf->SetFont('Arial','',7);
 $pdf->Cell(120, 11,utf8_decode($respuesta[0]["nombre_usuario"]), 1,0,'C',0);
 $pdf->Ln(11);
-$pdf->SetFont('Arial','B',6);
+$pdf->SetFont('Arial','B',7);
 $pdf->SetX(30);
 $pdf->Cell(30, 11,'DNI', 1,0,'C',0);
 $pdf->SetFont('Arial','',7);
 $pdf->Cell(120, 11,$respuesta[0]["dni_usuario"], 1,0,'C',0);
 $pdf->Ln(11);
-$pdf->SetFont('Arial','B',6);
+$pdf->SetFont('Arial','B',7);
 $pdf->SetX(30);
 $pdf->Cell(30, 11,'FECHA DE NOTIFICACION', 1,0,'C',0);
 $pdf->SetFont('Arial','',7);
 $pdf->Cell(120, 11,$respuesta[0]["fecha"], 1,0,'C',0);
 $pdf->Ln(11);
-$pdf->SetFont('Arial','B',6);
+$pdf->SetFont('Arial','B',7);
 $pdf->SetX(30);
 $pdf->Cell(150, 11,'DETALLE DE LA NOTIFICACION', 1,0,'C',0);
 $pdf->Ln(11);
